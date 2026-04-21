@@ -15,14 +15,14 @@ const creditWallet = async (req, res) => {
     if (!wallet) {
       wallet = await Wallet.create({ client_id, balance: 0 });
     }
-    wallet.balance += amount;
+    wallet.balance += amount; //credit wallet
     await wallet.save();
 
     await Ledger.create({ //create ledger entry
       client_id,
       type: "credit",
       amount,
-      balance_after: wallet.balance,
+      balance_after: wallet.balance, 
       note: "Admin credited wallet"
     });
     return res.status(200).json({
