@@ -1,14 +1,13 @@
 const express = require("express");
 const router = express.Router();
-const {
-  createOrder,
-  getOrderDetails,
-  getWalletBalance
-} = require("../controller/order");
+//Import controller functions
+const { createOrder, getOrderDetails, getWalletBalance } = require("../controller/order");
+//Import client auth middleware
 const { clientAuth } = require("../middleware/auth");
 
-router.post("/orders", clientAuth, createOrder);
-router.get("/orders/:order_id", clientAuth, getOrderDetails);
-router.get("/wallet/balance", clientAuth, getWalletBalance);
+// client routes
+router.post("/orders", clientAuth, createOrder); //create a order
+router.get("/orders/:order_id", clientAuth, getOrderDetails); //get order detail
+router.get("/wallet/balance", clientAuth, getWalletBalance); //get wallet balance
 
 module.exports = router;
