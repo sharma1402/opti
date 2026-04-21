@@ -12,7 +12,7 @@ app.use("/admin", require("./routes/admin"));
 app.use("/", require("./routes/order"));
 
 app.get("/", (req, res) => {
-  res.send("Wallet Transaction System Running");
+  res.send("Welcome to the order system API");
 });
 
 const PORT = process.env.PORT || 5000;
