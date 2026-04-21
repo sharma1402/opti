@@ -1,6 +1,6 @@
 const Wallet = require("../models/Wallet");
 const Ledger = require("../models/Ledger");
-
+// Admin controller functions
 const creditWallet = async (req, res) => {
   try {
     const { client_id, amount } = req.body;
@@ -18,7 +18,7 @@ const creditWallet = async (req, res) => {
     wallet.balance += amount;
     await wallet.save();
 
-    await Ledger.create({
+    await Ledger.create({ //create ledger entry
       client_id,
       type: "credit",
       amount,

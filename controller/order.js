@@ -104,13 +104,11 @@ const getOrderDetails = async (req, res) => {
 const getWalletBalance = async (req, res) => {
   try {
     const client_id = req.clientId;
-
     const wallet = await Wallet.findOne({ client_id });
 
     if (!wallet) {
       return res.status(404).json({ message: "Wallet not found" });
     }
-
     return res.status(200).json({
       client_id,
       balance: wallet.balance
